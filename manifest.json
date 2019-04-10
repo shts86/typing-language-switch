@@ -1,0 +1,32 @@
+{
+  "name": "Language Change",
+  "version": "1.0",
+  "description": "Switch typing mistak input language",
+  "manifest_version": 2,
+
+  "permissions": [
+    "http://*/*", "https://*/*", "activeTab"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["lang-change.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    "lettersDictionary.json"
+  ],
+  "commands": {
+    "language-change": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+O",
+        "mac": "Command+Shift+O"
+      },
+      "description": "Switch language focus input"
+    }
+  } 
+}
