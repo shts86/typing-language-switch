@@ -5,12 +5,16 @@
   "manifest_version": 2,
 
   "permissions": [
-    "http://*/*", "https://*/*", "activeTab"
+    "http://*/*", "https://*/*", "activeTab", "storage"
   ],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
   },
+  "browser_action": {
+    "default_title": "Change language.",
+    "default_popup": "popup.html"
+},
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],

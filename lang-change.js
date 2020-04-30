@@ -22,12 +22,16 @@ function changeInputLanguage() {
         selectedInput.value = transtlateArr.join('');
         return;
     }
+    // debugger;
     const elementText = selectedInput.innerText;
     // for whatsapp web
-    if(elementText && (" " + selectedInput.className + " ").replace(/[\n\t]/g, " ").indexOf(" selectable-text ") > -1) {
+    // if(elementText && (" " + selectedInput.className + " ").replace(/[\n\t]/g, " ").indexOf(" selectable-text ") > -1) {
+    if(elementText && selectedInput.getAttribute('contenteditable') === 'true') {
         const valurArr = elementText.split('');
-        const transtlateArr = valurArr.map(letter => doctionary[letter] ? doctionary[letter] : letter)
+        const transtlateArr = valurArr.map(letter => doctionary[letter] ? doctionary[letter] : letter);
         selectedInput.innerText = transtlateArr.join('');
+        const eventX = new Event('input', {bubbles: true});
+        selectedInput.dispatchEvent(eventX);
         return;
     } 
     
